@@ -1,0 +1,63 @@
+<div class="panel panel-primary">
+    <div class="panel-heading ui-jqgrid-titlebar ui-helper-clearfix">
+        <h3 class="panel-title"><?php echo $this->titulo; ?></h3>
+    </div>
+    <div class="panel-body">
+        <div class="table table-responsive">
+        <table id="lista_alumnos" class="table table-hover">
+            <thead class="table-inverse">
+                <tr>
+                    <th></th>
+                    <th>Id</th>
+                    <th>Apellidos y Nombres</th>
+                    <th>Domicilio</th>
+                    <th>Nro.Doc.</th>
+                    <th>Fecha Nac.</th>
+                    <th>Diagnóstico</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $i = 1;
+                foreach ($this->datos as $alumno) {
+                    if ($alumno->getEstado() == 'BAJA') {
+                        echo '<tr id="' . $alumno->getId() . '" name="' . $alumno->getNombres() . '" class="danger">';
+                    } elseif ($alumno->getEstado() == 'INSCRIPTO') {
+                        echo '<tr id="' . $alumno->getId() . '" name="' . $alumno->getNombres() . '" class="warning">';
+                    } else {
+                        echo '<tr id="' . $alumno->getId() . '" name="' . $alumno->getNombres() . '" >';
+                    }
+                    echo '<td></td>';
+                    echo '<td>' . $i /* $alumno->getId() */ . '</td>';
+                    ?>
+                <td>
+                    <?php echo $alumno->getApellidos() . ', ' . $alumno->getNombres(); ?>
+                </td>
+                <td>
+                    <?php echo $alumno->getFirstDomicilio(); ?>
+                </td>
+                <td>
+                    <?php echo $alumno->getNro_doc(); ?>
+                </td>
+                <td>
+                    <?php echo $alumno->getFecha_nac() . ' <span class="badge badge-info">' . $alumno->getEdad() . '</span>'; ?>
+                </td>
+                <td>
+                    <?php echo $alumno->getObjSalud(); ?>
+                </td>
+                <td>
+                    <?php echo $alumno->getEstado(); ?>
+                </td>
+    <!--            <td><img src="<?php // echo $alumno->getFoto()  ?>" class="foto_usuario_128"></td>-->
+                </tr>
+                <?php
+                $i++;
+            }
+            ?>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+<br>

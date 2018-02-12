@@ -1,0 +1,37 @@
+<?php include_once BASE_PATH . 'Vistas' . DS . 'Layout' . DS . 'Default' . DS . 'Navegacion.php'; ?>
+<div class="panel panel-primary">
+    <div class="panel-heading ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">
+        <h3 class="panel-title"><?php echo $this->titulo; ?></h3>
+    </div>
+    <div class="panel-body">
+        <table id="lista_permisos" class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Id</th>
+            <th>Permiso</th>
+            <th>Llave</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php 
+        foreach ($this->datos as $permiso) { 
+        echo '<tr id="' . $permiso['id_permiso'] . '" permiso="' . $permiso['permiso'] . '" >';?>
+            <td>
+                
+            </td>
+            <?php echo '<td>' . $permiso['id_permiso'] . '</td>';?>
+            <td>
+                <?php echo $permiso['permiso']; ?>
+            </td>          
+            <td>
+                <?php echo $permiso['clave']; ?>
+            </td>          
+        </tr>
+    <?php } ?>
+
+    </tbody>
+    </table>
+        
+    </div>
+</div>

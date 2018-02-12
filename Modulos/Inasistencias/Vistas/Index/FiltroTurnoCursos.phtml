@@ -1,0 +1,29 @@
+<div class="panel-body panel-warning">
+<div class="form-group">
+    <label for="curso" class="optional col-sm-1 control-label">Curso:</label>
+    <div class="col-sm-2">
+        <select name="curso" id="curso" class="form-control">
+            <option value="0" label="Seleccionar">Seleccionar</option>
+            <?php
+            foreach ($this->cursos as $curso) {
+                if($this->cursoSeleccionado == $curso->getId()){
+                    echo '<option value="' . $curso->getId() . '" label="' . $curso->getCurso() .
+                    '" selected="selected">' . $curso->getCurso() . '</option>';
+                }else{
+                    echo '<option value="' . $curso->getId() . '" label="' . $curso->getCurso() .
+                    '">' . $curso->getCurso() . '</option>';
+                }
+            }
+            ?>
+        </select>
+    </div>
+            <label for="fechaInasistencia" class="required col-sm-1 control-label">Fecha:</label>
+            <div class="col-sm-2">
+                <?php echo '<input type="date" name="fechaInasistencia" id="fechaInasistencia" 
+                            value="' . $this->fecha . '" class="form-control">'; ?>
+            </div>
+    <div class="col-sm-2">
+        <input type="submit" value="Mostrar" onclick="inasistencia_curso()" class="btn btn-sm btn-info">
+    </div>
+</div>
+</div>

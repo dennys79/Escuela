@@ -1,0 +1,29 @@
+<div class="col-md-7 ui-corner-all">
+    <form id="editar_ciclo" method="post" action="" class="form-horizontal" role="form">
+        <input type="hidden" name="editar" value="1" />
+        <input type="hidden" name="id" id="id"
+               value="<?php echo $this->datos->getId(); ?>" />
+
+        <div class="form-group">
+            <label for="ciclo" class="required col-sm-2 control-label">Ciclo:</label>
+            <div class="col-sm-10">
+                <input type="text" name="ciclo" id="ciclo"
+                       value="<?php if ($this->datos->getCiclo()) echo $this->datos->getCiclo(); ?>" 
+                       maxlength="4" size="4" class="form-control"
+                       required
+                       data-bv-notempty-message="El Ciclo es obligatorio">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="observaciones" class="required col-sm-2 control-label">Observaciones:</label>
+            <div class="col-sm-10">
+                <input type="text" name="observaciones" id="observaciones" 
+                       value="<?php if ($this->datos->getObservaciones()) echo $this->datos->getObservaciones(); ?>"
+                       maxlength="25" size="25" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-lg btn-primary btn-block" name="boton_guardar" value="Guardar">
+        </div>
+    </form>
+</div>

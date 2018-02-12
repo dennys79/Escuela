@@ -1,0 +1,21 @@
+<?php
+//require_once APP_PATH . 'Cursos' . DS . 'Modelos' . DS . 'Curso.php';
+require_once 'CicloDecorador.php';
+
+/**
+ * Clase CicloCurso
+ * @author WERD
+ */
+class Ciclo_Modelos_CicloCurso extends Ciclo_Modelos_CicloDecorador {
+
+    protected $_cursos;
+    
+    public function setCursos(array $cursos){
+        $this->_cursos = $cursos;
+    }
+
+    public function getCursos() {
+        return $this->_cursos;
+    }
+
+}

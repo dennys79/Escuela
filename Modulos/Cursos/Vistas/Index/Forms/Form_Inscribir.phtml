@@ -1,0 +1,44 @@
+<div class="col-md-12 ui-corner-all">
+    <form id="inscribir_curso" method="post" action="" class="form-horizontal" role="form">
+        <input type="hidden" name="inscribir" value="1" />
+        <input type="hidden" name="ciclo_lectivo" value="<?php echo $this->cicloActual->getCiclo(); ?>" />
+        <input type="hidden" name="id" id="id"
+               value="<?php echo $this->datos->getId(); ?>" />        
+        <div class="col-md-6 ui-corner-all">
+            <div class="form-group">
+                <label for="alumnos">Alumnos:</label>
+                <select multiple class="form-control" id="preinscriptos" size="10">
+                    <?php
+                    foreach ($this->alumnos as $alumno) {
+                        echo '<option value="' . $alumno->getId() .'">' . $alumno->getApellidos() . ', ' . $alumno->getNombres() . '</option>';
+                    }
+                    ?>
+                </select>
+                <p class="help-block"><?php echo $this->totalAlumnos . ' alumnos disponibles'; ?></p>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" id="btn_inscribir">Inscribir</button>
+                <!--<input type="submit" class="btn btn-lg btn-primary btn-block" name="boton_inscribir" value="Inscribir">-->
+            </div>
+        </div>
+        <div class="col-md-6 ui-corner-all">
+            <div class="form-group">
+                <label for="inscriptos">Inscriptos:</label>
+                <select multiple class="form-control" id="sel_inscriptos" size="10">
+                    <?php
+                    foreach ($this->inscriptos as $alumno) {
+                        echo '<option value="' . $alumno->getId() .'">' . $alumno->getApellidos() . ', ' . $alumno->getNombres() . '</option>';
+                    }
+                    ?>
+                </select>
+                <p class="help-block"><?php echo $this->totalInscriptos . ' alumnos en este curso'; ?></p>
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="btn btn-danger" id="btn_quitar">Quitar</button>
+                <!--<input type="submit" class="btn btn-lg btn-danger btn-block" name="boton_quitar" value="Quitar">-->
+            </div>
+        </div>
+
+    </form>
+</div>

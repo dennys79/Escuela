@@ -1,0 +1,23 @@
+<div class="list-group">
+    <div class="list-group-item active">
+        <h4 class="list-group-item-heading">
+            <?php echo $this->info->getTitulo() ; ?>
+        </h4>
+    </div>
+    
+    <?php foreach ($this->info->getItems() as $item) { ?>
+
+        <div class="list-group-item">
+            <h4 class="list-group-item-heading">
+                <span class="<?php echo $item['class'] ; ?>"></span>
+                <?php echo $item['item'] ; ?>
+            </h4>
+            <p class="list-group-item-text">
+                <?php echo $item['valor'] . $item['textoValor']; ?>
+                
+            </p>
+        </div>
+    
+    <?php } ?>
+
+</div>

@@ -1,0 +1,16 @@
+<?php include_once BASE_PATH . 'Vistas' . DS . 'Layout' . DS . 'Default' . DS . 'Navegacion.php'; ?>
+
+<div class="panel panel-primary">
+    <div class="panel-heading ui-jqgrid-titlebar ui-widget-header ui-helper-clearfix">
+        <h3 class="panel-title"><?php echo $this->titulo; ?></h3>
+    </div>
+
+    <div id = "tabs">
+        <ul>
+            <li><a href="#tabs-1">Datos Principales</a></li>
+        </ul>
+        <div id = "tabs-1">
+            <?php include_once 'Forms/Form_Nuevo.phtml'; ?>
+        </div>
+    </div>
+</div>

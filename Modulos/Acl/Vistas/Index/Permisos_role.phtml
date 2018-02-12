@@ -1,0 +1,60 @@
+<?php include_once BASE_PATH . 'Vistas' . DS . 'Layout' . DS . 'Default' . DS . 'Navegacion.php'; ?>
+<div class="panel panel-primary">
+    <div class="panel-heading ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">
+        <h3 class="panel-title"><?php echo $this->titulo; ?></h3>
+    </div>
+    <div class="panel-body">
+        <form name="editar_permisos_role" method="post" action="" class="form-horizontal" role="form">
+            <input type="hidden" name="guardar" value="1">
+        <table id="lista_roles" class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Permiso</th>
+            <th>Habilitado</th>
+            <th>Denegado</th>
+            <th>Ignorar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php 
+        foreach ($this->permisos as $permiso) { 
+        echo '<tr>'; ?>
+            <td>
+                <?php echo $permiso['nombre']; ?>
+            </td>
+            <td>
+                <?php if ($permiso['valor']==1){
+                    echo '<input type="radio" '
+                    . 'name="perm_ ' . $permiso['id'] .'" value="1" checked=checked>'; 
+                }else{
+                    echo '<input type="radio" '
+                    . 'name="perm_ ' . $permiso['id'] .'" value="1">'; 
+                }?>           
+            </td>
+            <td>
+                <?php if ($permiso['valor']==''){
+                    echo '<input type="radio" '
+                    . 'name="perm_ ' . $permiso['id'] .'" value="" checked="checked">'; 
+                }else{
+                    echo '<input type="radio" '
+                    . 'name="perm_ ' . $permiso['id'] .'" value="">'; 
+                }?>
+            </td>
+            <td>
+                <?php if ($permiso['valor']==='x'){
+                    echo '<input type="radio" '
+                    . 'name="perm_ ' . $permiso['id'] .'" value="x" checked="checked">'; 
+                }else{
+                    echo '<input type="radio" '
+                    . 'name="perm_ ' . $permiso['id'] .'" value="x">'; 
+                }?>
+            </td>
+        </tr>
+    <?php } ?>
+
+    </tbody>
+    </table>
+        <input type="submit" value="Guardar" class="btn btn-lg btn-primary btn-block">
+        </form>
+    </div>
+</div>

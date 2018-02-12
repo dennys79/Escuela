@@ -1,0 +1,30 @@
+<div class="panel panel-primary">
+    <div class="panel-heading ui-jqgrid-titlebar ui-helper-clearfix">
+        <h3 class="panel-title"><?php echo $this->titulo; ?></h3>
+    </div>
+    <div class="panel-body">
+      <?php
+      $i = 1;
+      foreach ($this->datos as $alumno) { ?>
+      <div class="card" style="width: 20rem; float: left;">
+        <h6 class="card-header">
+            <?php echo $alumno->getApellidos() . ', ' . $alumno->getNombres(); ?>
+        </h6>
+        <div class="card-block">
+          <h6 class="card-title"><?php echo $alumno->getNro_doc(); ?></h6>
+          <p class="card-text">
+            <?php
+            // var_dump($alumno->getFirstDomicilio());
+              if(null!==$alumno->getFirstDomicilio() or $alumno->getFirstDomicilio()==''){
+                  echo $alumno->getFirstDomicilio();
+              }else{
+                echo '-';
+              }?>
+          </p>
+          <p class="card-text"><?php echo $alumno->getFecha_nac() . ' <span class="badge">' . $alumno->getEdad() . '</span>'; ?></p>
+          <a href="?mod=Alumno" class="btn btn-primary">Ver Alumno</a>
+        </div>
+      </div>
+    <?php } ?>
+    </div>
+</div>

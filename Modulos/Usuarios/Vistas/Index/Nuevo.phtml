@@ -1,0 +1,68 @@
+<?php include_once BASE_PATH . 'Vistas' . DS . 'Layout' . DS . 'Default' . DS . 'Navegacion.php'; ?>
+<div class="panel panel-primary">
+    <div class="panel-heading ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">
+        <h3 class="panel-title">&nbsp;<span class="glyphicon glyphicon-user"></span> <?php echo $this->titulo; ?></h4>
+    </div>
+    <div class="panel-body">
+        <form name="form_nuevo" method="post" action="" class="form-horizontal" role="form">
+            <input type="hidden" value="1" name="nuevo">
+            <div class="form-group">
+                <label for="usuario" class="required col-sm-2 control-label">Usuario:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="usuario" id="usuario" value="" maxlength="25">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="nombre" class="required col-sm-2 control-label">Nombre:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="nombre" id="nombre" value="" maxlength="25">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="role" class="required col-sm-2 control-label">Role:</label>
+                <div class="col-sm-10">
+                    <select name="role" id="role" class="form-control">
+                        <?php
+                        foreach ($this->listaRoles as $DatoRole) {
+                            $role = $DatoRole['role'];
+                            $idRole = $DatoRole['id_role'];
+                            $seleccionado = '';
+                            echo "<option value=\"$idRole\" label=\"$role\" $seleccionado>$role</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="required col-sm-2 control-label">E-mail:</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" name="email" id="email" value="" maxlength="25">
+                </div>
+            </div>
+            <?php if ($_SESSION['level'] == 1) { ?>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="bloqueado" name="bloqueado"> Bloqueado
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="enviar_email" name="enviar_email"> Enviar Email
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 ui-corner-all">
+                <input type="submit" class="btn btn-lg btn-primary btn-block" name="boton_guardar" value="Guardar">
+            </div>
+        </form>
+    </div>
+</div>

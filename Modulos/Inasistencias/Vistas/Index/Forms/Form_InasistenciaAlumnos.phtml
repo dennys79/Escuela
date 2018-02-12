@@ -1,0 +1,65 @@
+<form name="inasistencia_alumnos" method="post" action="" class="form-horizontal" role="form">
+    <input type="hidden" name="guardar" value="1">    
+    <table id="lista_inasistencia" class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Alumno</th>
+                <th>Presente</th>
+                <th>Ausente</th>
+                <th>Tardanza</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($this->inasistencias as $inasistencia) {
+                echo '<tr id="' . $inasistencia->getId() . '" name="' . $inasistencia->getId() . '" >';
+                echo '<td></td>';
+                echo '<td>' . $inasistencia->getAyN() .'</td>';
+                if ($inasistencia->getValor() == "1" or $inasistencia->getValor() == NULL) {
+                    echo '<td>';
+                    echo '<input type="radio" '
+                    . 'name="inasistencia_' . $inasistencia->getId() . '" value="1" checked="checked">';
+                    echo '</td>';
+                    echo '<td>';
+                    echo '<input type="radio" '
+                    . 'name="inasistencia_' . $inasistencia->getId() . '" value="0">';
+                    echo '</td>';
+                    echo '<td>';
+                    echo '<input type="radio" '
+                    . 'name="inasistencia_' . $inasistencia->getId() . '" value="2">';
+                    echo '</td>';
+                } elseif ($inasistencia->getValor() == "0") {
+                    echo '<td>';
+                    echo '<input type="radio" '
+                    . 'name="inasistencia_' . $inasistencia->getId() . '" value="1">';
+                    echo '</td>';
+                    echo '<td>';
+                    echo '<input type="radio" '
+                    . 'name="inasistencia_' . $inasistencia->getId() . '" value="0" checked="checked">';
+                    echo '</td>';
+                    echo '<td>';
+                    echo '<input type="radio" '
+                    . 'name="inasistencia_' . $inasistencia->getId() . '" value="2">';
+                    echo '</td>';
+                } elseif ($inasistencia->getValor() == "2") {
+                    echo '<td>';
+                    echo '<input type="radio" '
+                    . 'name="inasistencia_' . $inasistencia->getId() . '" value="1">';
+                    echo '</td>';
+                    echo '<td>';
+                    echo '<input type="radio" '
+                    . 'name="inasistencia_' . $inasistencia->getId() . '" value="0">';
+                    echo '</td>';
+                    echo '<td>';
+                    echo '<input type="radio" '
+                    . 'name="inasistencia_' . $inasistencia->getId() . '" value="2" checked="checked">';
+                    echo '</td>';
+                }
+                echo '</tr>';
+            }
+            ?>
+        </tbody>
+    </table>
+    <input type="submit" value="Guardar" class="btn btn-lg btn-primary btn-block">
+</form>

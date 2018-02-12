@@ -1,0 +1,43 @@
+<?php include_once BASE_PATH . 'Vistas' . DS . 'Layout' . DS . 'Default' . DS . 'Navegacion.php'; ?>
+
+<div class="panel panel-primary">
+    <div class="panel-heading ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">
+        <h3 class="panel-title"><?php echo $this->titulo; ?></h3>
+    </div>
+    <div id = "tabs">
+        <ul>
+            <li><a href="#tabs-1">Datos Principales</a></li>
+            <li><a href="#tabs-2">Domicilio</a></li>
+            <li><a href="#tabs-3">Datos de Contacto</a></li>
+            <li><a href="#tabs-4">Datos Laborales</a></li>
+            <!--<li><a href="#tabs-5">Foto</a></li>-->
+        </ul>
+        <div id = "tabs-1">
+            <div class="row">
+                <?php include_once 'Forms/Form_EditarPersonal.php'; ?>
+                <?php include_once 'Forms/Form_FotosPersonal.php'; ?>
+            </div>
+        </div>
+        <div id = "tabs-2"><?php include_once 'DatosDomicilio.php'; ?></div>
+        <div id = "tabs-3"><?php include_once 'DatosContacto.php'; ?></div>
+        <div id = "tabs-4"><?php include_once 'DatosLaborales.php'; ?></div>
+        <!--<div id = "tabs-5"><?php // include_once 'FotoPersonal.php';   ?></div>-->
+
+    </div>
+
+    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Está seguro de querer eliminar los datos de
+                </div>
+                <div class="modal-body">
+                    <?php echo $this->datos->getApellidos() . ', ' . $this->datos->getNombres(); ?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <a href="" class="btn btn-danger danger conf-eliminar">Eliminar</a>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,40 @@
+<?php include_once BASE_PATH . 'Vistas' . DS . 'Layout' . DS . 'Default' . DS . 'Navegacion.php'; ?>
+
+<div id="titulo" class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">
+    <h4>&nbsp;<span class="glyphicon glyphicon-user"></span> <?php echo $this->titulo; ?></h4>
+</div>
+<div class="panel-body">
+
+    <h3>Usuario: <?php echo $this->infoUsuario->getUsername(); ?><br />Role: <?php echo $this->infoUsuario->getRole() ?></h3>
+
+    <form name="form_permisos" method="post" action="" class="form-horizontal" role="form">
+        <input type="hidden" value="1" name="guardar">
+        <?php if (isset($this->permisos) && count($this->permisos)): ?>
+            <?php foreach ($this->permisos as $pr): ?>
+                <?php if ($this->usuario[$pr]['valor'] == 1): ?>
+                    <?php $v = "habilitado"; ?>
+                <?php else: ?>
+                    <?php $v = "denegado"; ?>
+                <?php endif; ?>
+                <div class="form-group">
+                    <label for="valorOcupacionEmpresa" class="optional col-sm-2 control-label"><?php echo $this->usuario[$pr]['nombre']; ?></label>
+                    <div class="col-sm-10"> 
+                        <select class="form-control" name="perm_<?php echo $this->usuario[$pr]['id'] ?>">
+                            <option value="x" 
+                                <?php if ($this->usuario[$pr]['heredado']): ?> selected="selected" <?php endif; ?>>
+                                Heredado <?php echo '(' . $v . ')'; ?>
+                            </option>
+                            <option value="1" 
+                                <?php if ($this->usuario[$pr]['valor'] == 1 && $this->usuario[$pr]['heredado'] == ""): ?> selected="selected" <?php endif; ?>>
+                                Habilitado</option>
+                            <option value="" 
+                                <?php if ($this->usuario[$pr]['valor'] == 0 && $this->usuario[$pr]['heredado'] == ""): ?> selected="selected" <?php endif; ?>>
+                                Denegado</option>
+                        </select>
+                    </div>
+                </div>
+            <?php endforeach ?>
+            <input type="submit" value="Guardar" class="btn btn-lg btn-primary btn-block" />
+        <?php endif ?>
+    </form>
+</div>
