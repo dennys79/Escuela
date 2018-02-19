@@ -6,12 +6,12 @@ if($url->getHost()=='localhost'){
     define('BASE_URL', 'http://localhost/Escuela/');
     define('DB_USER','root');
     define('DB_PASS','');
-    define('DB_NAME','ig000179_contasoft');
+    define('DB_NAME','xxxxxxxxxxx');
 }  else {
-    define('BASE_URL', 'http://www.pequehogar.com.ar/Escuela/');
-    define('DB_USER','ig000179');
-    define('DB_PASS','ti32FOfuwa');
-    define('DB_NAME','ig000179_contasoft');
+    define('BASE_URL', 'http://www.sitio.com.ar/Escuela/');
+    define('DB_USER','xxxxxxxxxxxx');
+    define('DB_PASS','xxxxxxxxxxxx');
+    define('DB_NAME','xxxxxxxxxxxxxx');
 }
 
 //define('DEFAULT_CONTROLADOR', 'index');
